@@ -8,6 +8,7 @@ function ChatWindow() {
     const {prompt, setPrompt, reply, setReply, currThreadId, setPrevChats, setNewChat} = useContext(MyContext);
     const [loading, setLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
     const getReply = async () => {
         setLoading(true);
@@ -26,7 +27,7 @@ function ChatWindow() {
         };
 
         try {
-            const response = await fetch("http://localhost:8080/api/chat", options);
+            const response = await fetch(`${backendUrl}/api/chat`, options);
             const res = await response.json();
             console.log(res);
             setReply(res.reply);

@@ -1,4 +1,6 @@
 import "dotenv/config";
+import fetch from "node-fetch";
+
 
 const getOpenAIAPIResponse = async(message) => {
     const options = {
